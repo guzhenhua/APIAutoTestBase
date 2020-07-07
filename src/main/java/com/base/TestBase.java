@@ -27,7 +27,7 @@ import java.util.Properties;
 
 
 public class TestBase {
-    public static final String filepath="E:\\CSDN\\src\\main\\java\\com\\config\\config.properties";
+    public static final String filepath="E:\\APIAutoTestBase\\src\\main\\java\\com\\config\\config.properties";
     public Properties prop;
     public int RESPNSE_STATUS_CODE_200 = 200;
     public int RESPNSE_STATUS_CODE_201 = 201;
