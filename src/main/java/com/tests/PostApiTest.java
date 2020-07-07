@@ -64,11 +64,9 @@ public class PostApiTest extends TestBase {
         int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
         Assert.assertEquals(statusCode,RESPNSE_STATUS_CODE_200, "response status code is not 200");
 
-        //断言响应json内容中name和job是不是期待结果
+        //断言响应json内容中是不是期待结果
         String responseString = EntityUtils.toString(closeableHttpResponse.getEntity());
-        System.out.println(responseString);
         JSONObject responseJson = JSON.parseObject(responseString);
-        System.out.println(responseJson.toString());
 //        String data = TestUtil.getValueByJPath(responseJson, "data");
 //        Assert.assertEquals(data,"901","response data code is not 901");
     }

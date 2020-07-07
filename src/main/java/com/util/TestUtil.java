@@ -29,6 +29,7 @@ import com.alibaba.fastjson.JSONObject;
  * jpath写法举例：1) per_page  2)data[1]/first_name ，data是一个json数组，[1]表示索引
  * /first_name 表示data数组下某一个元素下的json对象的名称为first_name
  * jpath的写法就是data[0]/first_name
+ *
  * @return，返回first_name这个json对象名称对应的值
  */
 
@@ -36,22 +37,15 @@ public class TestUtil {
     //1 json解析方法
 
     public static String getValueByJPath(JSONObject responseJson, String jpath) {
-
         Object obj = responseJson;
-
         for (String s : jpath.split("/")) {
-
             if (!s.isEmpty()) {
-
                 if (!(s.contains("[") || s.contains("]"))) {
-
                     obj = ((JSONObject) obj).get(s);
-
                 } else if (s.contains("[") || s.contains("]")) {
-
                     try {
                         obj = ((JSONArray) ((JSONObject) obj).get(s.split("\\[")[0])).get(Integer.parseInt(s.split("\\[")[1].replaceAll("]", "")));
-                    }catch (NullPointerException e){
+                    } catch (Exception e) {
                         System.out.println("路径可能有问题");
                     }
 
