@@ -8,6 +8,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -36,11 +37,12 @@ public class GetApiTest extends TestBase {
     String host;
     String url;
     RestClient restClient;
+    final static Logger Log = Logger.getLogger(GetApiTest.class);
 
     @BeforeClass
     public void setUp() {
         testBase = new TestBase();
-        host = prop.getProperty("HOST");
+        host = prop.getProperty("GET_HOST");
         url = host + "/test/login?userId=17962";
 
     }
@@ -50,7 +52,7 @@ public class GetApiTest extends TestBase {
         CloseableHttpResponse httpResponse = restClient.get(url);
         //断言状态码是不是200
         int statusCode = httpResponse.getStatusLine().getStatusCode();
-        Assert.assertEquals(statusCode,RESPNSE_STATUS_CODE_200, "response status code is not 200");
+        Assert.assertEquals(statusCode, RESPNSE_STATUS_CODE_200, "response status code is not 200");
     }
 
     @Test
@@ -61,8 +63,19 @@ public class GetApiTest extends TestBase {
         String Response = EntityUtils.toString(httpResponse.getEntity(), "utf-8");
         JSONObject jsonObject = JSONObject.parseObject(Response);
         String data = TestUtil.getValueByJPath(jsonObject, "data");
-        Assert.assertEquals(data,"02b277a658184ad1a2a5833c94f85902","response data  is not right");
-        Assert.assertEquals(statusCode,RESPNSE_STATUS_CODE_200, "response status code is not 200");
+        Assert.assertEquals(data, "02b277a658184ad1a2a5833c94f85902", "response data  is not right");
+        Assert.assertEquals(statusCode, RESPNSE_STATUS_CODE_200, "response status code is not 200");
     }
+
+    @Test
+    public void getAPITest2() throws ClientProtocolException, IOException {
+        Log.info("开始执行用例...");
+        CloseableHttpResponse httpResponse = restClient.get(url);
+        //断言状态码是不是200
+        Log.info("测试响应状态码是否是200");
+        int statusCode = restClient.getStatusCode(httpResponse);
+        Assert.assertEquals(statusCode, RESPNSE_STATUS_CODE_200, "response status code is not 200");
+    }
+
 }
 

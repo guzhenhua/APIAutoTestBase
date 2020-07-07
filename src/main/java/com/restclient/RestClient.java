@@ -127,7 +127,7 @@ public class RestClient {
     }
 
     //4. Put方法
-    public CloseableHttpResponse put(String url, String entityString, HashMap<String,String> headerMap) throws ClientProtocolException, IOException {
+    public static CloseableHttpResponse put(String url, String entityString, HashMap<String,String> headerMap) throws ClientProtocolException, IOException {
 
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpPut httpput = new HttpPut(url);
@@ -142,7 +142,7 @@ public class RestClient {
     }
 
     //5. Delete方法
-    public CloseableHttpResponse delete(String url) throws ClientProtocolException, IOException {
+    public static CloseableHttpResponse delete(String url) throws ClientProtocolException, IOException {
 
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpDelete httpdel = new HttpDelete(url);
@@ -157,7 +157,7 @@ public class RestClient {
      * @param response
      * @return 返回int类型状态码
      */
-    public int getStatusCode (CloseableHttpResponse response) {
+    public static int getStatusCode (CloseableHttpResponse response) {
 
         int statusCode = response.getStatusLine().getStatusCode();
         Log.info("解析，得到响应状态码:"+ statusCode);
@@ -173,7 +173,7 @@ public class RestClient {
      * @throws ParseException
      * @throws IOException
      */
-    public JSONObject getResponseJson (CloseableHttpResponse response) throws ParseException, IOException {
+    public static JSONObject getResponseJson (CloseableHttpResponse response) throws ParseException, IOException {
         Log.info("得到响应对象的String格式");
         String responseString = EntityUtils.toString(response.getEntity(),"UTF-8");
         JSONObject responseJson = JSON.parseObject(responseString);

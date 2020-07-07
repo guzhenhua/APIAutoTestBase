@@ -9,6 +9,7 @@ import com.util.TestUtil;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -39,10 +40,11 @@ public class PostApiTest extends TestBase {
     String url;
     RestClient restClient;
     CloseableHttpResponse closeableHttpResponse;
+
     @BeforeClass
     public void setUp() {
         testBase = new TestBase();
-        host = prop.getProperty("HOST");
+        host = prop.getProperty("POST_HOST");
         url = host + "/api/admin/team/school/create";
     }
 
