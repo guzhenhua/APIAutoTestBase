@@ -28,6 +28,7 @@ import com.alibaba.fastjson.JSONObject;
  * jpath,这个jpath指的是用户想要查询json对象的值的路径写法
  * jpath写法举例：1) per_page  2)data[1]/first_name ，data是一个json数组，[1]表示索引
  * /first_name 表示data数组下某一个元素下的json对象的名称为first_name
+ * jpath的写法就是data[0]/first_name
  * @return，返回first_name这个json对象名称对应的值
  */
 
@@ -60,11 +61,11 @@ public class TestUtil {
         return obj.toString();
     }
 
-    public static void main(String[] args) {
-        String responseString = "{\"data\":{\"limit\":10,\"page\":1,\"rows\":[{\"clubId\":1153,\"clubName\":\"顾_电竞社\",\"college\":\"哈否大学\",\"createTime\":\"2020-07-07 15:11\",\"logoUrl\":\"https://djs-oss.fejj.com/club/a3922a100c0247398046b8c400e45d7c.png\",\"proprieterName\":\"仙道\",\"proprieterTel\":\"13028866960\",\"status\":1,\"teamCount\":3,\"tel\":\"\",\"userCount\":2},{\"clubId\":1152,\"clubName\":\"没有电竞\",\"college\":\"德福喜大学\",\"createTime\":\"2020-07-07 13:55\",\"logoUrl\":\"https://djs-oss.fejj.com/club/a3922a100c0247398046b8c400e45d7c.png\",\"proprieterName\":\"时间老人\",\"proprieterTel\":\"13725548926\",\"status\":1,\"teamCount\":-2,\"tel\":\"\",\"userCount\":2}],\"total\":2},\"msg\":\"操作成功！\",\"ret\":0}";
-        JSONObject object = JSON.parseObject(responseString);
-        String data = TestUtil.getValueByJPath(object, "data/rows[1]/clubName");
-        System.out.println(data);
-    }
+//    public static void main(String[] args) {
+//        String responseString = "{\"data\":{\"limit\":10,\"page\":1,\"rows\":[{\"clubId\":1153,\"clubName\":\"顾_电竞社\",\"college\":\"哈否大学\",\"createTime\":\"2020-07-07 15:11\",\"logoUrl\":\"https://djs-oss.fejj.com/club/a3922a100c0247398046b8c400e45d7c.png\",\"proprieterName\":\"仙道\",\"proprieterTel\":\"13028866960\",\"status\":1,\"teamCount\":3,\"tel\":\"\",\"userCount\":2},{\"clubId\":1152,\"clubName\":\"没有电竞\",\"college\":\"德福喜大学\",\"createTime\":\"2020-07-07 13:55\",\"logoUrl\":\"https://djs-oss.fejj.com/club/a3922a100c0247398046b8c400e45d7c.png\",\"proprieterName\":\"时间老人\",\"proprieterTel\":\"13725548926\",\"status\":1,\"teamCount\":-2,\"tel\":\"\",\"userCount\":2}],\"total\":2},\"msg\":\"操作成功！\",\"ret\":0}";
+//        JSONObject object = JSON.parseObject(responseString);
+//        String data = TestUtil.getValueByJPath(object, "data/rows[1]/clubName");
+//        System.out.println(data);
+//    }
 
 }
