@@ -1,5 +1,6 @@
 package com.base;
 
+import com.restclient.RestClient;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 
@@ -43,10 +44,16 @@ public class TestBase {
         }
     }
 
-    @Test
-    void test_ee(){
-        TestBase testBase = new TestBase();
-        String urlpath=testBase.prop.getProperty("HOST");
-        System.out.println(urlpath);
-    }
+//    @Test
+//    void test_ee(){
+//        TestBase testBase = new TestBase();
+//        String urlpath=testBase.prop.getProperty("HOST");
+//        System.out.println(urlpath);
+//
+//        try {
+//            RestClient.get(urlpath+"/test/login?userId=17947");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
