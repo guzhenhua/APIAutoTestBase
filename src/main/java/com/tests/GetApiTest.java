@@ -4,6 +4,7 @@ import com.base.TestBase;
 import com.restclient.RestClient;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -43,6 +44,9 @@ public class GetApiTest extends TestBase {
     @Test
     public void getAPITest() throws ClientProtocolException, IOException {
         CloseableHttpResponse httpResponse = restClient.get(url);
+        //断言状态码是不是200
+        int statusCode = httpResponse.getStatusLine().getStatusCode();
+        Assert.assertEquals(statusCode,RESPNSE_STATUS_CODE_200, "response status code is not 200");
     }
 
 }

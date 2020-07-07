@@ -69,7 +69,7 @@ public class RestClient {
 
 
    //重构后,直接将响应返回给具体用例自己处理
-    public CloseableHttpResponse get(String url) throws ClientProtocolException, IOException {
+    public static  CloseableHttpResponse get(String url) throws ClientProtocolException, IOException {
 
         //创建一个可关闭的HttpClient对象
         CloseableHttpClient httpclient = HttpClients.createDefault();
