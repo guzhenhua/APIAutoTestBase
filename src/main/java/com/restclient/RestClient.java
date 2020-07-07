@@ -13,6 +13,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,7 +109,7 @@ public class RestClient {
         //创建一个HttpPost的请求对象
         HttpPost httppost = new HttpPost(url);
         //设置payload
-        httppost.setEntity(new StringEntity(entityString));
+        httppost.setEntity(new StringEntity(entityString, Charset.forName("UTF-8")));
 
         //加载请求头到httppost对象
         for (Map.Entry<String, String> entry : headermap.entrySet()) {

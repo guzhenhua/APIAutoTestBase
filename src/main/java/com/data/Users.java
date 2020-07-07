@@ -18,49 +18,49 @@ package com.data;
  * @PROJECT_NAME: CSDN
  */
 public class Users {
-        String data;
-        String msg;
-        int ret;
-
-    public String getData() {
-        return data;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public int getRet() {
-        return ret;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public void setRet(int ret) {
-        this.ret = ret;
-    }
-
-    public Users(String data, String msg, int ret) {
-        this.data = data;
-        this.msg = msg;
-        this.ret = ret;
-    }
+    String teamName;
+    int gameId;
+    String teamUrl;
 
     public Users() {
+    }
+
+    public Users(String teamName, int gameId, String teamUrl) {
+        this.teamName = teamName;
+        this.gameId = gameId;
+        this.teamUrl = teamUrl;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
+
+    public String getTeamUrl() {
+        return teamUrl;
+    }
+
+    public void setTeamUrl(String teamUrl) {
+        this.teamUrl = teamUrl;
     }
 
     @Override
     public String toString() {
         return "Users{" +
-                "data='" + data + '\'' +
-                ", msg='" + msg + '\'' +
-                ", ret=" + ret +
+                "teamName='" + teamName + '\'' +
+                ", gameId='" + gameId + '\'' +
+                ", teamUrl='" + teamUrl + '\'' +
                 '}';
     }
 }
