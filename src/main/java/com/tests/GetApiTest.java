@@ -3,6 +3,7 @@ package com.tests;
 import com.base.TestBase;
 import com.restclient.RestClient;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -41,8 +42,7 @@ public class GetApiTest extends TestBase {
 
     @Test
     public void getAPITest() throws ClientProtocolException, IOException {
-//        restClient = new RestClient();
-        restClient.get(url);
+        CloseableHttpResponse httpResponse = restClient.get(url);
     }
 
 }
