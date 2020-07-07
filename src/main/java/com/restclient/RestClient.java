@@ -4,9 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -120,5 +118,29 @@ public class RestClient {
         return httpResponse;
     }
 
+    //4. Put方法
+    public CloseableHttpResponse put(String url, String entityString, HashMap<String,String> headerMap) throws ClientProtocolException, IOException {
 
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        HttpPut httpput = new HttpPut(url);
+        httpput.setEntity(new StringEntity(entityString));
+
+        for(Map.Entry<String, String> entry : headerMap.entrySet()) {
+            httpput.addHeader(entry.getKey(), entry.getValue());
+        }
+        //发送put请求
+        CloseableHttpResponse httpResponse = httpclient.execute(httpput);
+        return httpResponse;
+    }
+
+    //5. Delete方法
+    public CloseableHttpResponse delete(String url) throws ClientProtocolException, IOException {
+
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        HttpDelete httpdel = new HttpDelete(url);
+
+        //发送put请求
+        CloseableHttpResponse httpResponse = httpclient.execute(httpdel);
+        return httpResponse;
+    }
 }
