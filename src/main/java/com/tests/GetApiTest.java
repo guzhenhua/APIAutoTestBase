@@ -44,7 +44,6 @@ public class GetApiTest extends TestBase {
         testBase = new TestBase();
         host = prop.getProperty("GET_HOST");
         url = host + "/test/login?userId=17962";
-
     }
 
     @Test
